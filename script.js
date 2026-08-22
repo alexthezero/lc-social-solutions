@@ -1,74 +1,136 @@
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
-const contactForm = document.getElementById("contactForm");
-const formNote = document.getElementById("formNote");
-const packageButtons = document.querySelectorAll(".package-btn");
-const serviceSelect = document.getElementById("service");
+const PREVIEW_PASSWORD_HASH = "a337f882bb914cecf772439a0c118d3e50893b76bddd02f13d0b9fe3c6ec446c";
+const PREVIEW_SESSION_KEY = "lc-social-solutions-preview";
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("active");
-    navToggle.classList.toggle("active", isOpen);
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+const accessGate = document.getElementById("accessGate");
+const accessForm = document.getElementById("accessForm");
+const passwordInput = document.getElementById("previewPassword");
+const gateStatus = document.getElementById("gateStatus");
+const togglePassword = document.getElementById("togglePassword");
 
-  navLinks.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-      navToggle.classList.remove("active");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
-  });
+async function sha256(value) {
+  const bytes = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(digest)]
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
 }
 
-packageButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const selectedPackage = button.dataset.package;
+function unlockPreview(immediate = false) {
+  document.body.classList.remove("locked");
 
-    if (serviceSelect && selectedPackage) {
-      serviceSelect.value = selectedPackage;
+  if (!accessGate) return;
+
+  if (immediate) {
+    accessGate.remove();
+    return;
+  }
+
+  gateStatus.textContent = "Access granted.";
+  gateStatus.className = "gate-status success";
+  accessGate.classList.add("is-leaving");
+  window.setTimeout(() => accessGate.remove(), 430);
+}
+
+if (sessionStorage.getItem(PREVIEW_SESSION_KEY) === "unlocked") {
+  unlockPreview(true);
+}
+
+accessForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const submitButton = accessForm.querySelector('button[type="submit"]');
+  const suppliedPassword = passwordInput.value.trim();
+
+  submitButton.disabled = true;
+  gateStatus.textContent = "Checking access…";
+  gateStatus.className = "gate-status";
+
+  try {
+    const suppliedHash = await sha256(suppliedPassword);
+
+    if (suppliedHash !== PREVIEW_PASSWORD_HASH) {
+      throw new Error("Incorrect password");
     }
 
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    sessionStorage.setItem(PREVIEW_SESSION_KEY, "unlocked");
+    unlockPreview();
+  } catch (error) {
+    gateStatus.textContent = "That password is not correct. Please try again.";
+    gateStatus.className = "gate-status error";
+    passwordInput.select();
+    window.setTimeout(() => {
+      submitButton.disabled = false;
+    }, 650);
+  }
+});
+
+togglePassword?.addEventListener("click", () => {
+  const isVisible = passwordInput.type === "text";
+  passwordInput.type = isVisible ? "password" : "text";
+  togglePassword.textContent = isVisible ? "Show" : "Hide";
+  togglePassword.setAttribute("aria-label", isVisible ? "Show password" : "Hide password");
+  passwordInput.focus();
+});
+
+const lockPreview = document.getElementById("lockPreview");
+lockPreview?.addEventListener("click", () => {
+  sessionStorage.removeItem(PREVIEW_SESSION_KEY);
+  location.reload();
+});
+
+const navToggle = document.getElementById("navToggle");
+const navLinks = document.getElementById("navLinks");
+
+navToggle?.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("active");
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+navLinks?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+    navToggle?.setAttribute("aria-expanded", "false");
   });
 });
 
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(contactForm);
-    const name = formData.get("name") || "A potential client";
-    const business = formData.get("business") || "their business";
-    const service = formData.get("service") || "social media support";
-    const message = formData.get("message") || "No extra details added yet.";
-
-    formNote.innerHTML = `
-      <strong>Sample inquiry created:</strong><br>
-      ${name} from ${business} is interested in <strong>${service}</strong>.<br>
-      Message: ${message}<br><br>
-      When you add a real business email, this form can be connected to Formspree, Netlify Forms, EmailJS, or a custom backend.
-    `;
-
-    contactForm.reset();
+const serviceSelect = document.getElementById("serviceSelect");
+document.querySelectorAll(".package-choice").forEach((choice) => {
+  choice.addEventListener("click", () => {
+    if (serviceSelect && choice.dataset.package) {
+      serviceSelect.value = choice.dataset.package;
+    }
   });
-}
+});
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const data = new FormData(contactForm);
+  const name = data.get("name") || "there";
+  const service = data.get("service") || "social media support";
+
+  formStatus.textContent = `Preview complete — ${name}, this inquiry would be routed for ${service} once the site is launched.`;
+  formStatus.classList.add("success");
+});
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const revealOnScroll = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        revealOnScroll.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.16,
-    rootMargin: "0px 0px -40px 0px",
-  }
-);
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.14, rootMargin: "0px 0px -35px 0px" }
+  );
 
-revealElements.forEach((element) => revealOnScroll.observe(element));
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add("visible"));
+}
