@@ -28,7 +28,7 @@ function unlockPreview(immediate = false) {
   gateStatus.textContent = "Access granted.";
   gateStatus.className = "gate-status success";
   accessGate.classList.add("is-leaving");
-  window.setTimeout(() => accessGate.remove(), 430);
+  window.setTimeout(() => accessGate.remove(), 420);
 }
 
 if (sessionStorage.getItem(PREVIEW_SESSION_KEY) === "unlocked") {
@@ -60,7 +60,7 @@ accessForm?.addEventListener("submit", async (event) => {
     passwordInput.select();
     window.setTimeout(() => {
       submitButton.disabled = false;
-    }, 650);
+    }, 500);
   }
 });
 
@@ -81,16 +81,28 @@ lockPreview?.addEventListener("click", () => {
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 
+function closeNavigation() {
+  navLinks?.classList.remove("active");
+  navToggle?.setAttribute("aria-expanded", "false");
+}
+
 navToggle?.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("active");
   navToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
 navLinks?.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active");
-    navToggle?.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", closeNavigation);
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeNavigation();
+});
+
+document.addEventListener("click", (event) => {
+  if (!navLinks?.classList.contains("active")) return;
+  if (navLinks.contains(event.target) || navToggle?.contains(event.target)) return;
+  closeNavigation();
 });
 
 const serviceSelect = document.getElementById("serviceSelect");
@@ -107,17 +119,21 @@ const formStatus = document.getElementById("formStatus");
 
 contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
-  const data = new FormData(contactForm);
-  const name = data.get("name") || "there";
-  const service = data.get("service") || "social media support";
 
-  formStatus.textContent = `Preview complete — ${name}, this inquiry would be routed for ${service} once the site is launched.`;
+  const data = new FormData(contactForm);
+  const name = String(data.get("name") || "there").trim();
+  const service = String(data.get("service") || "social media support").trim();
+
+  formStatus.textContent = `Preview complete — ${name}, this request would be routed as an inquiry for ${service} once the live form is connected.`;
   formStatus.classList.add("success");
 });
 
 const revealElements = document.querySelectorAll(".reveal");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if ("IntersectionObserver" in window) {
+if (reduceMotion || !("IntersectionObserver" in window)) {
+  revealElements.forEach((element) => element.classList.add("visible"));
+} else {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -127,10 +143,8 @@ if ("IntersectionObserver" in window) {
         }
       });
     },
-    { threshold: 0.14, rootMargin: "0px 0px -35px 0px" }
+    { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
   );
 
   revealElements.forEach((element) => observer.observe(element));
-} else {
-  revealElements.forEach((element) => element.classList.add("visible"));
 }
