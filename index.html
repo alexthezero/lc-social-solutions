@@ -1,335 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>L C Social Solutions | Social Media Design & Strategy</title>
-  <meta name="description" content="L C Social Solutions helps small businesses grow online with thoughtful social media design, content planning, and strategy." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="theme-color" content="#f6f1e8">
+  <title>LC Social Solutions | Private Preview</title>
+  <meta name="description" content="Private preview for LC Social Solutions, a social media management concept for small businesses.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <header class="site-header">
+<body class="locked">
+  <section class="access-gate" id="accessGate" aria-labelledby="gateTitle">
+    <div class="gate-botanical gate-botanical-one" aria-hidden="true"></div>
+    <div class="gate-botanical gate-botanical-two" aria-hidden="true"></div>
+    <div class="gate-card">
+      <div class="gate-logo" aria-hidden="true">LC</div>
+      <p class="gate-kicker">Private website preview</p>
+      <h1 id="gateTitle">LC Social Solutions</h1>
+      <p class="gate-copy">This concept site is currently being reviewed before public launch.</p>
+      <form id="accessForm" class="gate-form">
+        <label for="previewPassword">Preview password</label>
+        <div class="password-row">
+          <input id="previewPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter password" required autofocus>
+          <button type="button" id="togglePassword" class="show-password" aria-label="Show password">Show</button>
+        </div>
+        <button class="gate-button" type="submit">View Website <span aria-hidden="true">→</span></button>
+        <p class="gate-status" id="gateStatus" role="status" aria-live="polite">Access is limited to invited reviewers.</p>
+      </form>
+      <p class="gate-footnote">LC Social Solutions · Social media management</p>
+    </div>
+  </section>
+
+  <header class="site-header" id="home">
     <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="L C Social Solutions home">
-        <span class="brand-mark">LC</span>
-        <span class="brand-text">L C Social Solutions</span>
+      <a class="brand" href="#home" aria-label="LC Social Solutions home">
+        <span class="brand-mark" aria-hidden="true">LC</span>
+        <span class="brand-copy">
+          <strong>LC Social Solutions</strong>
+          <small>Social media management</small>
+        </span>
       </a>
 
       <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
 
       <div class="nav-links" id="navLinks">
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#packages">Packages</a>
-        <a href="#contact" class="nav-cta">Start Here</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Start a Conversation</a>
+        <button class="preview-lock" id="lockPreview" type="button">Lock Preview</button>
       </div>
     </nav>
   </header>
 
-  <main id="home">
-    <section class="hero section-pad">
+  <main>
+    <section class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Social media design + strategy for small businesses</p>
-          <h1>Helping small brands show up beautifully, consistently, and with purpose.</h1>
-          <p class="hero-text">
-            L C Social Solutions supports small businesses with thoughtful content design, practical social strategies,
-            and organized planning that makes showing up online feel less overwhelming.
-          </p>
+          <p class="eyebrow">Thoughtful social media for growing brands</p>
+          <h1>Show up online with <em>clarity, consistency,</em> and confidence.</h1>
+          <p class="hero-lede">LC Social Solutions helps small businesses turn scattered social media into an intentional presence — with strategy, content, community support, and reporting that all work together.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Plan My Socials</a>
-            <a href="#services" class="btn btn-secondary">View Services</a>
+            <a class="button button-primary" href="#packages">Explore Support</a>
+            <a class="button button-ghost" href="#services">See What We Do</a>
           </div>
-          <div class="hero-stats" aria-label="Business highlights">
-            <div>
-              <strong>01</strong>
-              <span>Content Design</span>
-            </div>
-            <div>
-              <strong>02</strong>
-              <span>Social Strategy</span>
-            </div>
-            <div>
-              <strong>03</strong>
-              <span>Brand Clarity</span>
-            </div>
+          <div class="hero-proof" aria-label="Core service areas">
+            <span>Strategy</span><i></i><span>Content</span><i></i><span>Management</span><i></i><span>Insights</span>
           </div>
         </div>
 
-        <div class="hero-card reveal">
-          <div class="leaf leaf-one"></div>
-          <div class="leaf leaf-two"></div>
-          <div class="mock-dashboard">
-            <div class="dashboard-top">
-              <span></span>
-              <span></span>
-              <span></span>
+        <div class="hero-art reveal" aria-label="Social media planning illustration">
+          <div class="botanical botanical-a"></div>
+          <div class="botanical botanical-b"></div>
+          <div class="planning-card">
+            <div class="card-topline">
+              <span class="mini-brand">LC</span>
+              <span class="status-pill">Monthly plan</span>
             </div>
-            <div class="dashboard-profile">
-              <div class="profile-icon">LC</div>
-              <div>
-                <p>Monthly Content Plan</p>
-                <strong>Balanced. Branded. Intentional.</strong>
-              </div>
+            <h2>Your social presence, organized.</h2>
+            <div class="content-stack">
+              <div><b>01</b><span><strong>Plan</strong><small>Goals + content pillars</small></span></div>
+              <div><b>02</b><span><strong>Create</strong><small>Posts + captions</small></span></div>
+              <div><b>03</b><span><strong>Manage</strong><small>Publishing + community</small></span></div>
+              <div><b>04</b><span><strong>Refine</strong><small>Insights + next steps</small></span></div>
             </div>
-            <div class="content-lines">
-              <span class="wide"></span>
-              <span></span>
-              <span class="medium"></span>
-            </div>
-            <div class="mini-grid">
-              <div>Brand Voice</div>
-              <div>Post Ideas</div>
-              <div>Graphics</div>
-              <div>Insights</div>
-            </div>
+          </div>
+          <div class="floating-card">
+            <span>Content rhythm</span>
+            <strong>Consistent, not chaotic.</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="intro section-pad-sm">
-      <div class="container intro-card reveal">
-        <p class="section-kicker">Built for busy business owners</p>
-        <h2>Your online presence should feel clear, calm, and professional.</h2>
-        <p>
-          Whether you need a fresh content direction, branded graphics, or a realistic posting plan,
-          L C Social Solutions helps turn scattered ideas into a simple social media system.
-        </p>
+    <section class="brand-strip">
+      <div class="container strip-grid">
+        <p>Built for small businesses that are ready to look as professional online as they are in real life.</p>
+        <div class="strip-tags" aria-label="Ideal clients">
+          <span>Local businesses</span><span>Service brands</span><span>Creators</span><span>Growing teams</span>
+        </div>
       </div>
     </section>
 
-    <section class="services section-pad" id="services">
+    <section class="section" id="services">
       <div class="container">
         <div class="section-heading reveal">
-          <p class="section-kicker">Services</p>
-          <h2>Design-forward social support with strategy behind it.</h2>
+          <p class="eyebrow">What we can take off your plate</p>
+          <h2>Social media support that connects the dots.</h2>
+          <p>Instead of treating strategy, design, posting, and analytics like separate tasks, LC Social Solutions brings them together into one practical system built around your business.</p>
         </div>
 
         <div class="service-grid">
-          <article class="service-card reveal">
-            <span class="service-icon">✦</span>
-            <h3>Social Media Design</h3>
-            <p>Branded posts, story graphics, highlight covers, promotional visuals, and clean content templates.</p>
-          </article>
-          <article class="service-card reveal">
-            <span class="service-icon">◎</span>
-            <h3>Content Strategy</h3>
-            <p>Content pillars, posting direction, campaign ideas, and strategy built around realistic business goals.</p>
-          </article>
-          <article class="service-card reveal">
-            <span class="service-icon">☾</span>
-            <h3>Monthly Planning</h3>
-            <p>Organized calendars, caption prompts, launch planning, seasonal content, and consistent posting structure.</p>
-          </article>
-          <article class="service-card reveal">
-            <span class="service-icon">◌</span>
-            <h3>Brand Voice</h3>
-            <p>Messaging support so every caption, post, and call-to-action sounds polished and aligned with the brand.</p>
-          </article>
-          <article class="service-card reveal">
-            <span class="service-icon">✺</span>
-            <h3>Small Business Audits</h3>
-            <p>A practical review of your current pages with clear recommendations for design, consistency, and engagement.</p>
-          </article>
-          <article class="service-card reveal">
-            <span class="service-icon">⌁</span>
-            <h3>Growth Support</h3>
-            <p>Simple reporting, insight reviews, and adjustments based on what your audience is actually responding to.</p>
-          </article>
+          <article class="service-card reveal"><span class="service-number">01</span><h3>Social Media Management</h3><p>Ongoing planning, scheduling, publishing, account upkeep, and day-to-day coordination.</p><ul><li>Publishing support</li><li>Calendar management</li><li>Platform consistency</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">02</span><h3>Content Planning & Creation</h3><p>Purposeful content ideas and branded creative built to fit your goals and your audience.</p><ul><li>Content pillars</li><li>Graphics & concepts</li><li>Campaign planning</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">03</span><h3>Captions & Brand Voice</h3><p>Copy that sounds natural, feels like your brand, and gives your audience a clear next step.</p><ul><li>Caption writing</li><li>Calls-to-action</li><li>Voice consistency</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">04</span><h3>Community Support</h3><p>A more attentive presence through thoughtful engagement and organized response routines.</p><ul><li>Comment workflows</li><li>Inbox routines</li><li>Engagement guidance</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">05</span><h3>Strategy & Account Audits</h3><p>A clear look at what is working, what feels disconnected, and what should change next.</p><ul><li>Profile review</li><li>Competitor context</li><li>Action plan</li></ul></article>
+          <article class="service-card reveal"><span class="service-number">06</span><h3>Analytics & Reporting</h3><p>Simple reporting that turns platform numbers into useful decisions instead of noise.</p><ul><li>Performance snapshots</li><li>Content learnings</li><li>Monthly refinements</li></ul></article>
         </div>
       </div>
     </section>
 
-    <section class="process section-pad" id="process">
-      <div class="container process-grid">
-        <div class="section-heading sticky-heading reveal">
-          <p class="section-kicker">The Process</p>
-          <h2>A softer, smarter way to get consistent online.</h2>
-          <p>
-            The goal is not to post randomly. The goal is to create content that looks like your business,
-            sounds like your business, and supports where your business is going.
-          </p>
-        </div>
-
-        <div class="steps">
-          <article class="step reveal">
-            <span>01</span>
-            <div>
-              <h3>Discover</h3>
-              <p>Clarify your business, audience, offers, tone, current social presence, and what is not working.</p>
-            </div>
-          </article>
-          <article class="step reveal">
-            <span>02</span>
-            <div>
-              <h3>Design</h3>
-              <p>Create a visual direction with colors, templates, layouts, and content styles that feel cohesive.</p>
-            </div>
-          </article>
-          <article class="step reveal">
-            <span>03</span>
-            <div>
-              <h3>Plan</h3>
-              <p>Build a manageable social calendar with post topics, captions, goals, and promotional moments.</p>
-            </div>
-          </article>
-          <article class="step reveal">
-            <span>04</span>
-            <div>
-              <h3>Refine</h3>
-              <p>Review performance, adjust the content direction, and keep improving the strategy over time.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="portfolio section-pad-sm">
-      <div class="container">
+    <section class="section process-section" id="process">
+      <div class="container process-layout">
         <div class="section-heading reveal">
-          <p class="section-kicker">Mock Work Preview</p>
-          <h2>Content that feels clean, natural, and intentionally branded.</h2>
+          <p class="eyebrow">A process that stays human</p>
+          <h2>Less guessing. More rhythm.</h2>
+          <p>Good social media management should make the business feel lighter, not add another complicated system. The process stays organized, collaborative, and easy to understand.</p>
         </div>
-
-        <div class="portfolio-grid">
-          <article class="portfolio-card reveal">
-            <div class="portfolio-visual visual-one"></div>
-            <h3>Neutral Brand Launch</h3>
-            <p>Soft graphics and launch captions for a boutique service business.</p>
-          </article>
-          <article class="portfolio-card reveal">
-            <div class="portfolio-visual visual-two"></div>
-            <h3>Monthly Content Board</h3>
-            <p>A planned mix of educational, promotional, and community-focused posts.</p>
-          </article>
-          <article class="portfolio-card reveal">
-            <div class="portfolio-visual visual-three"></div>
-            <h3>Small Business Refresh</h3>
-            <p>Updated templates, brand voice, and posting structure for better consistency.</p>
-          </article>
+        <div class="timeline">
+          <article class="timeline-step reveal"><span>01</span><div><h3>Listen</h3><p>Understand your business, audience, offers, goals, personality, and current pain points.</p></div></article>
+          <article class="timeline-step reveal"><span>02</span><div><h3>Build the plan</h3><p>Choose the right content mix, cadence, visual direction, and priorities for the month ahead.</p></div></article>
+          <article class="timeline-step reveal"><span>03</span><div><h3>Create & manage</h3><p>Turn the plan into usable content and keep the publishing workflow moving consistently.</p></div></article>
+          <article class="timeline-step reveal"><span>04</span><div><h3>Learn & refine</h3><p>Review what connected with your audience and use those insights to improve the next cycle.</p></div></article>
         </div>
       </div>
     </section>
 
-    <section class="packages section-pad" id="packages">
+    <section class="section support-section">
       <div class="container">
-        <div class="section-heading center reveal">
-          <p class="section-kicker">Packages</p>
-          <h2>Simple starting points for different stages of business.</h2>
+        <div class="support-card reveal">
+          <div><p class="eyebrow">The goal</p><h2>Your brand should feel recognizable before someone even reads the username.</h2></div>
+          <p>Consistency is bigger than matching colors. It is the feeling created when your visuals, captions, offers, timing, and customer experience all sound like they belong to the same business.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="packages">
+      <div class="container">
+        <div class="section-heading centered reveal">
+          <p class="eyebrow">Ways to work together</p>
+          <h2>Start where your business needs the most help.</h2>
+          <p>Packages can be customized as LC Social Solutions defines its final service scope and pricing.</p>
         </div>
 
         <div class="package-grid">
           <article class="package-card reveal">
-            <p class="package-label">Starter</p>
-            <h3>Social Refresh</h3>
-            <p>Best for businesses that need clarity, direction, and a cleaner look.</p>
-            <ul>
-              <li>Profile audit</li>
-              <li>Visual direction</li>
-              <li>Content pillar suggestions</li>
-              <li>Quick-win action list</li>
-            </ul>
-            <button class="btn btn-secondary package-btn" data-package="Social Refresh">Ask About This</button>
+            <p class="package-kicker">One-time</p><h3>Foundation</h3><p class="package-summary">For a business that needs clarity before it needs more content.</p>
+            <ul><li>Social account audit</li><li>Profile optimization guidance</li><li>Content pillars</li><li>30-day direction</li><li>Priority action plan</li></ul>
+            <a class="text-link package-choice" data-package="Foundation" href="#contact">Ask about Foundation <span>→</span></a>
           </article>
-
           <article class="package-card featured reveal">
-            <p class="package-label">Most Popular</p>
-            <h3>Content Strategy Kit</h3>
-            <p>Best for businesses that want a polished plan before posting.</p>
-            <ul>
-              <li>30-day content direction</li>
-              <li>Post ideas and caption prompts</li>
-              <li>Branded design guidance</li>
-              <li>Campaign recommendations</li>
-            </ul>
-            <button class="btn btn-primary package-btn" data-package="Content Strategy Kit">Ask About This</button>
+            <div class="featured-tag">Ongoing support</div><p class="package-kicker">Monthly</p><h3>Consistency</h3><p class="package-summary">For a business that wants a reliable content system and regular support.</p>
+            <ul><li>Monthly content planning</li><li>Branded post creation</li><li>Caption support</li><li>Scheduling & publishing</li><li>Monthly performance review</li></ul>
+            <a class="button button-primary package-choice" data-package="Consistency" href="#contact">Ask about Consistency</a>
           </article>
-
           <article class="package-card reveal">
-            <p class="package-label">Ongoing</p>
-            <h3>Monthly Social Support</h3>
-            <p>Best for businesses that need consistent support and accountability.</p>
-            <ul>
-              <li>Monthly planning</li>
-              <li>Branded content design</li>
-              <li>Caption support</li>
-              <li>Insight review</li>
-            </ul>
-            <button class="btn btn-secondary package-btn" data-package="Monthly Social Support">Ask About This</button>
+            <p class="package-kicker">Full service</p><h3>Presence</h3><p class="package-summary">For a business ready to hand over more of the day-to-day management.</p>
+            <ul><li>Strategy & monthly calendar</li><li>Content coordination</li><li>Publishing management</li><li>Community support</li><li>Reporting & optimization</li></ul>
+            <a class="text-link package-choice" data-package="Presence" href="#contact">Ask about Presence <span>→</span></a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="quote-banner section-pad-sm">
-      <div class="container quote-card reveal">
-        <p>“Social media does not have to feel chaotic. With the right plan, it can become one of the clearest parts of your brand.”</p>
+    <section class="section about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-mark reveal" aria-hidden="true"><span>LC</span><small>social solutions</small></div>
+        <div class="about-copy reveal">
+          <p class="eyebrow">Why LC Social Solutions</p>
+          <h2>Professional does not have to feel impersonal.</h2>
+          <p>LC Social Solutions is built around a simple idea: small businesses deserve thoughtful social media support without agency-sized complexity. The approach is warm, organized, strategic, and designed to meet a business where it is.</p>
+          <p>Whether the need is a cleaner content direction or ongoing management, the goal stays the same — make it easier to show up online in a way that feels intentional and sustainable.</p>
+        </div>
       </div>
     </section>
 
-    <section class="contact section-pad" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-copy reveal">
-          <p class="section-kicker">Start the Conversation</p>
-          <h2>Ready to make social media feel more intentional?</h2>
-          <p>
-            This is a mock contact form for the website preview. Replace the placeholder email in the code later when L C Social Solutions has a final business email address.
-          </p>
-          <div class="contact-details">
-            <p><strong>Business:</strong> L C Social Solutions</p>
-            <p><strong>Focus:</strong> Small business social media design + strategy</p>
-            <p><strong>Email:</strong> Add business email here</p>
-          </div>
+    <section class="section contact-section" id="contact">
+      <div class="container contact-card reveal">
+        <div class="contact-copy">
+          <p class="eyebrow">Let’s make social feel simpler</p>
+          <h2>Tell us where your social media feels stuck.</h2>
+          <p>This site is currently in private preview. The inquiry form is an on-page demonstration and will be connected to the final business email before public launch.</p>
+          <div class="contact-note"><strong>LC Social Solutions</strong><span>Social media management for small businesses</span></div>
         </div>
-
-        <form class="contact-form reveal" id="contactForm">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-
-          <label for="business">Business Name</label>
-          <input type="text" id="business" name="business" placeholder="Your business" required />
-
-          <label for="service">What are you interested in?</label>
-          <select id="service" name="service">
-            <option value="Social Refresh">Social Refresh</option>
-            <option value="Content Strategy Kit">Content Strategy Kit</option>
-            <option value="Monthly Social Support">Monthly Social Support</option>
-            <option value="Not Sure Yet">Not Sure Yet</option>
-          </select>
-
-          <label for="message">Tell us what you need</label>
-          <textarea id="message" name="message" rows="5" placeholder="I need help with..."></textarea>
-
-          <button type="submit" class="btn btn-primary full-width">Create Inquiry</button>
-          <p class="form-note" id="formNote">This demo form will generate a sample inquiry message on this page.</p>
+        <form class="contact-form" id="contactForm">
+          <div class="field-row">
+            <label>First name<input name="name" type="text" placeholder="Your name" required></label>
+            <label>Business<input name="business" type="text" placeholder="Business name" required></label>
+          </div>
+          <label>Interested in<select name="service" id="serviceSelect"><option value="Not sure yet">Not sure yet</option><option value="Foundation">Foundation</option><option value="Consistency">Consistency</option><option value="Presence">Presence</option><option value="Custom support">Custom support</option></select></label>
+          <label>What would you like help with?<textarea name="message" rows="5" placeholder="Tell us a little about what you need..."></textarea></label>
+          <button class="button button-primary" type="submit">Preview Inquiry</button>
+          <p class="form-status" id="formStatus">Preview mode — nothing will be sent yet.</p>
         </form>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <a class="brand footer-brand" href="#home">
-          <span class="brand-mark">LC</span>
-          <span class="brand-text">L C Social Solutions</span>
-        </a>
-        <p>Social media design and strategy for small businesses.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#packages">Packages</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div class="container footer-inner">
+      <a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">LC</span><span class="brand-copy"><strong>LC Social Solutions</strong><small>Social media management</small></span></a>
+      <p>Thoughtful strategy. Consistent presence. Social that feels like your business.</p>
+      <span class="preview-badge">Private preview</span>
     </div>
   </footer>
 
